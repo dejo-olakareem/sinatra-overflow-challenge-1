@@ -3,14 +3,14 @@ get '/questions' do
 
   @questions = Question.all #define instance variable for view
 
-  erb :'questions/index' #show all questions view (index)
+  erb :"questions/index.html" #show all questions view (index)
 
 end
 
 
 get '/questions/new' do
 
-  erb :'questions/new' #show new questions view
+  erb :"questions/new.html" #show new questions view
 
 end
 
@@ -23,7 +23,7 @@ post '/questions' do
   if @question.save #saves new question or returns false if unsuccessful
     redirect '/questions' #redirect back to questions index page
   else
-    erb :'questions/new' # show new questions view again(potentially displaying errors)
+    erb :"questions/new.html" # show new questions view again(potentially displaying errors)
   end
 
 end
@@ -35,7 +35,7 @@ get '/questions/:id' do
 
   @question = Question.find(params[:id]) #define instance variable for view
 
-  erb :'questions/show' #show single question view
+  erb :"questions/show.html" #show single question view
 
 end
 
@@ -45,7 +45,7 @@ get '/questions/:id/edit' do
   #get params from url
   @question = Question.find(params[:id]) #define intstance variable for view
 
-  erb :'questions/edit' #show edit question view
+  erb :"questions/edi.html" #show edit question view
 
 end
 
@@ -60,7 +60,7 @@ put '/questions/:id' do
   if @question.save #saves new question or returns false if unsuccessful
     redirect '/questions' #redirect back to questions index page
   else
-    erb :'questions/edit' #show edit question view again(potentially displaying errors)
+    erb :"questions/edit.html" #show edit question view again(potentially displaying errors)
   end
 
 end
@@ -73,6 +73,6 @@ delete '/questions/:id' do
 
   @question.destroy #delete question
 
-  redirect '/questions' #redirect back to questions index page
+  redirect "/questions" #redirect back to questions index page
 
 end
