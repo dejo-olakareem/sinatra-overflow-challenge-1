@@ -1,0 +1,13 @@
+<form action="/questions/<%=@question.id%>" id="usrform" method="post">
+<input type="hidden" name="_method" value="put">
+  Title: <input type="text" name="question[title]">
+  <input type="submit">
+</form>
+
+<textarea name="question[body]" form="usrform">Question here...</textarea>
+
+
+<form action="/questions/<%=@question.id%>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+</form>

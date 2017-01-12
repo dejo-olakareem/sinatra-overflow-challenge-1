@@ -45,7 +45,7 @@ get '/questions/:id/edit' do
   #get params from url
   @question = Question.find(params[:id]) #define intstance variable for view
 
-  erb :"questions/edi.html" #show edit question view
+  erb :"questions/edit.html" #show edit question view
 
 end
 
