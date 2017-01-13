@@ -38,6 +38,9 @@ get '/questions/:id' do
 
   @answers = @question.answers
 
+  
+  puts "$" * 99
+
   erb :"questions/show.html" #show single question view
 
 end
