@@ -1,6 +1,8 @@
-<h4><%= @question.title %></h4>
-<h4><%= @question.body %></h4>
-<h5><%=@question.user.username%></h5>
+<div class="jumbotron">
+  <h2><%= @question.title %></h2>
+  <h4><%= @question.body %></h4>
+  <h5><%=@question.user.username%></h5>
+</div>
 <div>
   <form method="POST" action="/upvotes/<%=@question.id%>/new">
     <input type="hidden" name="class" value= "Question"  />

@@ -1,6 +1,22 @@
-<form action="/questions" id="usrform" method="post">
-  Title: <input type="text" name="question[title]">
-  <input type="submit">
-</form>
 
-<textarea name="question[body]" form="usrform" placeholder="Question here..."></textarea>
+<form class="form-horizontal" action="/questions" id="usrform" method="post">
+  <fieldset>
+    <div class="form-group">
+      <label for="inputTitle" class="col-lg-2 control-label">Title</label>
+      <div class= "col-lg-10">
+        <input type="text" class="form-control" id="inputTitle" name="question[title]" placeholder="Question title">
+      </div>
+    </div>
+    <div class = "form-group">
+      <label for="inputBody" class="col-lg-2 control-label">Body</label>
+      <div class = "col-lg-10">
+        <input type="text"  class="form-control" id="inputBody" name="question[body]" placeholder="Question Body">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
