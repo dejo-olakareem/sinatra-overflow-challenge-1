@@ -36,9 +36,13 @@ get '/questions/:id' do
   
   @question = Question.find(params[:id]) #define instance variable for view
 
+  @answers = @question.answers
+
   erb :"questions/show.html" #show single question view
 
 end
+
+
 
 
 get '/questions/:id/edit' do
@@ -55,6 +59,7 @@ put '/questions/:id' do
 
   #get params from url
   @question = Question.find(params[:id]) #define variable to edit
+
 
   @question.assign_attributes(params[:question]) #assign new attributes
 
