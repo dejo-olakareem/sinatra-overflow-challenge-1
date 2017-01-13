@@ -1,6 +1,6 @@
 <a href="/questions/new">Add Question</a>
 
-
+<div class="question_listing">
 <% @questions.each do |question| %>
 	<h4><a href="/questions/<%=question.id%>"><%= question.title %></a></h4>
 	<h5><%= question.body %></h5><br>
@@ -13,3 +13,4 @@
 	  </form>
 	</div>
 <% end %>
+</div>
