@@ -19,5 +19,23 @@ body{
 }
 .vote-buttons{
   float:left;
-  vertical-align: bottom;
+  vertical-align: top;
+}
+
+#answer-link{
+  text-align: center;
+}
+
+#logout {
+  text-align: right;
+}
+#profile{
+  text-align: right;
+}
+
+#signup{
+  text-align: right;
+}
+#login{
+  text-align: right; 
 }
