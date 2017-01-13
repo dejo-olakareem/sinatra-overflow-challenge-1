@@ -60,3 +60,56 @@ delete '/questions/:id/answers/:id' do
   redirect "/questions/#{@question.id}"
 
 end
+
+get '/answers/:id/comments' do
+
+  erb :'/comments/_index.html'
+end
+
+get '/answers/:id/comments/new' do
+
+  erb :'/comments/_new.html'
+end
+
+
+post '/answers/:id/comments' do
+  #how do I get the commentable_type info onto the form?
+  p "I made it to the server!!!!!"
+  @comment = Comment.create(body: params[:comment][:body])
+
+end
+
+
+get '/answers/:id/comments/:comment_id/edit' do
+  @answer = Answer.find(params[:id])
+  @comment = @answer.comments.find(params[:comment_id])
+
+  erb :'comments/_edit.html' #show edit comment view
+end
+
+
+put '/answers/:id/comments/:comment_id' do
+
+  @answer = Answer.find(params[:id])
+  @comment = @answer.comments.find(params[:comment_id])
+
+  @comment.assign_attributes(params[:comment])
+  #this will be modified with AJAX
+  if @comment.save
+    redirect '/comments' #or wherever we need to show
+  else
+    erb :'comments/edit' #show edit comment view again(potentially displaying errors)
+  end
+
+end
+
+
+delete '/answers/:id/comments/:comment_id' do
+
+  @answer = Answer.find(params[:id])
+  @comment = @answer.comments.find(params[:comment_id])
+  @comment.destroy
+
+  redirect '/comments' #or wherever we want
+end
+
