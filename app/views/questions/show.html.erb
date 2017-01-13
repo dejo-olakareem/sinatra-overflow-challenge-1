@@ -9,11 +9,15 @@
 <div class="vote-buttons">
   <form method="POST" action="/upvotes/<%=@question.id%>/new">
     <input type="hidden" name="class" value= "Question"  />
-    <input type="submit" value="^" />
+    <button type="submit">
+      <span class="glyphicon glyphicon-chevron-up"> </span>
+    </button>
   </form>
   <%=vote_count(@question)  %>
   <form method="POST" action="/downvotes/<%=@question.id%>/new">
-    <input type="submit" value="v" />
+    <button type="submit">
+      <span class="glyphicon glyphicon-chevron-down"></span>
+    </button>
     <input type="hidden" name="class" value= "Question"  />
   </form>
 </div>
@@ -22,7 +26,7 @@
 <%if user? && current_user == @question.user_id%>
 	<a href="/questions/<%=@question.id%>/edit">Edit question</a>
 <% elsif user? && current_user != @question.user_id && (@question.answers.select {|answer| answer.user_id == current_user}).empty? %>
-	<h4><a href="/questions/<%=@question.id%>/answers/new">Answer this question</a></h4>
+	<h4 id="answer-link" ><a href="/questions/<%=@question.id%>/answers/new">Answer this question</a></h4>
 <%end%>
 
 
@@ -31,11 +35,15 @@
 	<h4><%= answer.body %></h4>
   <form method="POST" action="/upvotes/<%=answer.id%>/new">
     <input type="hidden" name="class" value= "Answer"  />
-    <input type="submit" value="^" />
+    <button type="submit">
+      <span class="glyphicon glyphicon-chevron-up"> </span>
+    </button>
   </form>
   <%=vote_count(answer)  %>
   <form method="POST" action="/downvotes/<%=answer.id%>/new">
-    <input type="submit" value="v" />
+    <button type="submit">
+      <span class="glyphicon glyphicon-chevron-down"></span>
+    </button>
     <input type="hidden" name="class" value= "Answer"  />
   </form>
 	<%if current_user == answer.user_id %>
