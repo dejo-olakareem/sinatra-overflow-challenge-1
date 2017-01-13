@@ -1,6 +1,3 @@
-<h4><%= @question.title %></h4>
-<h4><%= @question.body %></h4>
-<h5><%=@question.user.username%></h5>
 <div>
   <form method="POST" action="/questions/:id/upvote">
     <input type="submit" value="^" />
@@ -9,8 +6,3 @@
     <input type="submit" value="v" />
   </form>
 </div>
-
-
-<%if current_user == @question.user_id%>
-<a href="/questions/<%=@question.id%>/edit">Edit question</a>
-<%end%>
