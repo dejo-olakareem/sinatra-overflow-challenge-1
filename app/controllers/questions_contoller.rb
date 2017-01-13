@@ -10,6 +10,7 @@ end
 
 get '/questions/new' do
 
+
   erb :"questions/new.html" #show new questions view
 
 end
@@ -19,7 +20,7 @@ post '/questions' do
 
   #below works with properly formatted params in HTML form
   @question = Question.new(params[:question]) #create new question
-
+  @question.user_id = session[:user_id]
   if @question.save #saves new question or returns false if unsuccessful
     redirect "/questions/#{@question.id}" #redirect back to questions index page
   else
@@ -32,7 +33,7 @@ end
 get '/questions/:id' do
 
   #gets params from url
-
+  
   @question = Question.find(params[:id]) #define instance variable for view
 
   erb :"questions/show.html" #show single question view
