@@ -4,11 +4,14 @@
   <h5><%=@question.user.username%></h5>
 </div>
 <div>
-  <form method="POST" action="/questions/:id/upvote">
+  <form method="POST" action="/upvotes/<%=@question.id%>/new">
+    <input type="hidden" name="class" value= "Question"  />
     <input type="submit" value="^" />
   </form>
-  <form method="POST" action="/questions/:id/downvote">
+  <%=vote_count(@question)  %>
+  <form method="POST" action="/downvotes/<%=@question.id%>/new">
     <input type="submit" value="v" />
+    <input type="hidden" name="class" value= "Question"  />
   </form>
 </div>
 
@@ -23,6 +26,15 @@
 
 <% @answers.each do |answer| %>
 	<h4><%= answer.body %></h4>
+  <form method="POST" action="/upvotes/<%=answer.id%>/new">
+    <input type="hidden" name="class" value= "Answer"  />
+    <input type="submit" value="^" />
+  </form>
+  <%=vote_count(answer)  %>
+  <form method="POST" action="/downvotes/<%=answer.id%>/new">
+    <input type="submit" value="v" />
+    <input type="hidden" name="class" value= "Answer"  />
+  </form>
 	<%if current_user == answer.user_id %>
 		<a href="/questions/<%=@question.id%>/answers/<%=answer.id%>/edit">EDIT</a>
 	<% end %>

@@ -7,12 +7,14 @@
 	<h4><a href="/questions/<%=question.id%>"><%= question.title %></a></h4>
 	<h5><%= question.body %></h5><br>
 	<div>
-	  <form method="POST" action="/questions/<%=question.id%>/upvote">
+	  <form method="POST" action="/upvotes/<%=question.id%>/new">
+			<input type="hidden" name="class" value= "Question"  />
 	    <input type="submit" value="^" />
 	  </form>
 		<%=vote_count(question)  %>
-	  <form method="POST" action="/questions/<%=question.id%>/downvote">
+	  <form method="POST" action="/downvotes/<%=question.id%>/new">
 	    <input type="submit" value="v" />
+			<input type="hidden" name="class" value= "Question"  />
 	  </form>
 	</div>
 <% end %>
