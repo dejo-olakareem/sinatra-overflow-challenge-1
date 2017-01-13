@@ -5,6 +5,8 @@ end
 post '/login' do
   @user = User.find_by(email: params[:email])
 
+  p @user
+
   if @user.password = params[:password]
     login(@user)
     redirect '/'
