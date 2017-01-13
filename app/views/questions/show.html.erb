@@ -21,6 +21,7 @@
 
 <% @answers.each do |answer| %>
 	<h4><%= answer.body %></h4>
+	<h4><%= answer.user.username%></h4>
 	<%if current_user == answer.user_id %>
 		<a href="/questions/<%=@question.id%>/answers/<%=answer.id%>/edit">EDIT</a>
 	<% end %>
