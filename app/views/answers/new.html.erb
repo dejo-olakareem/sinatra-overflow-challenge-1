@@ -1,0 +1,6 @@
+<form action="/questions/<%=@question.id%>/answers" id="usrform" method="post">
+  Answer:
+	<textarea name="answer[body]" form="usrform">Answer here...</textarea>
+	 <input type="hidden" name="answer[user_id]" value="<%= current_user%>">
+  <input type="submit">
+</form>

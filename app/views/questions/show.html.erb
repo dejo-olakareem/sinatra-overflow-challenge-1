@@ -2,6 +2,17 @@
 <h4><%= @question.body %></h4>
 <h5><%=@question.user.username%></h5>
 
-<%if current_user == @question.user_id%>
-<a href="/questions/<%=@question.id%>/edit">Edit question</a>
+<%if user? && current_user == @question.user_id%>
+	<a href="/questions/<%=@question.id%>/edit">Edit question</a>
+<% elsif user? && current_user != @question.user_id && (@question.answers.select {|answer| answer.user_id == current_user}).empty? %>
+	<h4><a href="/questions/<%=@question.id%>/answers/new">Answer this question</a></h4>	
 <%end%>
+
+
+
+<% @answers.each do |answer| %>
+	<h4><%= answer.body %></h4>
+	<%if current_user == answer.user_id %>
+		<a href="/questions/<%=@question.id%>/answers/<%=answer.id%>/edit">EDIT</a>
+	<% end %>
+<% end %>`
