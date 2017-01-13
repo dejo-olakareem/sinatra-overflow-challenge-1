@@ -4,15 +4,27 @@
 
 <div id="container" class="question_listing">
 <% @questions.each do |question| %>
-	<h4><a href="/questions/<%=question.id%>"><%= question.title %></a></h4>
-	<h5><%= question.body %></h5><br>
-	<div>
+		<h4><a href="/questions/<%=question.id%>"><%= question.title %></a></h4>
+		<h5><%= question.body %></h5><br>
+
+	<div class ="vote-buttons">
 	  <form method="POST" action="/upvotes/<%=question.id%>/new">
 			<input type="hidden" name="class" value= "Question"  />
 	    <input class="upvote"type="submit" value="^" />
 	  </form>
 		<span class="vote_value"><%=vote_count(question) %></span>
 	  <form method="POST" action="/downvotes/<%=question.id%>/new">
+	    <button type="submit">
+				<span class="glyphicon glyphicon-chevron-up"> </span>
+			</button>
+	  </form>
+		<div class ="vote-total">
+			<%=vote_count(question)  %>
+		</div>
+	  <form method="POST" action="/downvotes/<%=question.id%>/new">
+	    <button type="submit">
+				<span class="glyphicon glyphicon-chevron-down"></span>
+			</button>
 			<input type="hidden" name="class" value= "Question"  />
 			<input class="downvote" type="submit" value="v" />
 	  </form>
