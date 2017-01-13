@@ -1,3 +1,41 @@
 body{
   width: 960px;
+  margin: auto;
+}
+
+.question_listing{
+  text-align: center;
+}
+
+.question-text {
+  text-align: center;
+}
+
+.jumbotron {
+  width: 720px;
+  margin:auto;
+  display: block;
+
+}
+.vote-buttons{
+  float:left;
+  vertical-align: top;
+}
+
+#answer-link{
+  text-align: center;
+}
+
+#logout {
+  text-align: right;
+}
+#profile{
+  text-align: right;
+}
+
+#signup{
+  text-align: right;
+}
+#login{
+  text-align: right; 
 }

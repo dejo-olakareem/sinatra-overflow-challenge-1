@@ -1,27 +1,8 @@
-get '/users/new' do
-
-  erb :'users/new'
-
-end
-
-
-
-post '/users' do
-  @user = User.new(params[:user])
-  if @user.save
-    login(@user)
-
-    redirect '/questions'
-  else
-    erb :'users/new'
-  end
-end
-
-
-get '/users/:id/comments' do
+get '/comments' do
 
   erb :'/comments/_index.html'
 end
+
 
 get '/comments/new' do
 
@@ -29,7 +10,7 @@ get '/comments/new' do
 end
 
 
-post '/users/:id/comments' do
+post '/comments' do
   #how do I get the commentable_type info onto the form?
   p "I made it to the server!!!!!"
   @comment = Comment.create(body: params[:comment][:body])
@@ -37,17 +18,17 @@ post '/users/:id/comments' do
 end
 
 
-get '/users/:id/comments/:comment_id/edit' do
+get '/comments/:id/edit' do
 
-  @comment = Comment.find(params[:comment_id])
+  @comment = Comment.find(params[:id])
 
   erb :'comments/_edit.html' #show edit comment view
 end
 
 
-put '/users/:id/comments/:comment_id' do
+put '/comments/:id' do
 
-  @comment = Comment.find(params[:comment_id])
+  @comment = Comment.find(params[:id])
 
   @comment.assign_attributes(params[:comment])
   #this will be modified with AJAX
@@ -60,11 +41,12 @@ put '/users/:id/comments/:comment_id' do
 end
 
 
-delete '/users/:id/comments/:comment_id' do
-  @user =
-  @comment = Comment.find(params[:comment_id])
+delete '/comments/:id' do
+
+  @comment = Comment.find(params[:id])
   @comment.destroy
 
   redirect '/comments' #or wherever we want
 end
+
 
