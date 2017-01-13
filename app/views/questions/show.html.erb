@@ -1,5 +1,7 @@
 <h4><%= @question.title %></h4>
 <h4><%= @question.body %></h4>
+<h5><%=@question.user.username%></h5>
 
-
+<%if current_user == @question.user_id%>
 <a href="/questions/<%=@question.id%>/edit">Edit question</a>
+<%end%>

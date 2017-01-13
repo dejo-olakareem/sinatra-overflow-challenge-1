@@ -1,11 +1,11 @@
 require 'faker'
 
 
-# 10.times do
-#   User.create!( :username => Faker::Ancient.god,
-#                 :email      => Faker::Internet.email,
-#                 :password   => 'password' )
-# end
+10.times do
+  User.create!( :username => Faker::Ancient.god,
+                :email      => Faker::Internet.email,
+                :password   => 'password' )
+end
 
 30.times do
   Question.create!( :title => Faker::TwinPeaks.quote,
