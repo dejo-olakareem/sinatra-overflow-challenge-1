@@ -2,19 +2,19 @@
 <a href="/questions/new">Add Question</a>
 <% end %>
 
-<div class="question_listing">
+<div id="container" class="question_listing">
 <% @questions.each do |question| %>
 	<h4><a href="/questions/<%=question.id%>"><%= question.title %></a></h4>
 	<h5><%= question.body %></h5><br>
 	<div>
 	  <form method="POST" action="/upvotes/<%=question.id%>/new">
 			<input type="hidden" name="class" value= "Question"  />
-	    <input type="submit" value="^" />
+	    <input class="upvote"type="submit" value="^" />
 	  </form>
-		<%=vote_count(question)  %>
+		<span class="vote_value"><%=vote_count(question) %></span>
 	  <form method="POST" action="/downvotes/<%=question.id%>/new">
-	    <input type="submit" value="v" />
 			<input type="hidden" name="class" value= "Question"  />
+			<input class="downvote" type="submit" value="v" />
 	  </form>
 	</div>
 <% end %>
