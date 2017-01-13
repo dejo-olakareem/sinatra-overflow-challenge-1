@@ -1,4 +1,4 @@
-get '/questions/:question_id/answers/new' do 
+get '/questions/:id/answers/new' do
 
   @question = Question.find(params[:question_id])
 
@@ -7,7 +7,7 @@ get '/questions/:question_id/answers/new' do
 end
 
 
-post '/questions/:question_id/answers' do 
+post '/questions/:id/answers' do
 
   @question = Question.find(params[:question_id])
 
@@ -23,7 +23,7 @@ post '/questions/:question_id/answers' do
 end
 
 
-get '/questions/:question_id/answers/:id/edit' do
+get '/questions/:id/answers/:id/edit' do
 
   @question = Question.find(params[:question_id])
 
@@ -34,7 +34,7 @@ get '/questions/:question_id/answers/:id/edit' do
 end
 
 
-put '/questions/:question_id/answers/:id' do
+put '/questions/:id/answers/:id' do
 
   @question = Question.find(params[:question_id])
 
@@ -42,14 +42,14 @@ put '/questions/:question_id/answers/:id' do
 
   if @answer.update_attributes(params[:answer])
     redirect "/questions/#{@question.id}"
-  else 
+  else
     erb :"answers/edit.html" #show edit answers view again(potentially displaying errors)
   end
 
 end
 
 
-delete '/questions/:question_id/answers/:id' do 
+delete '/questions/:id/answers/:id' do
 
   @question = Question.find(params[:question_id])
 
