@@ -1,14 +1,17 @@
+<% if user? %>
 <a href="/questions/new">Add Question</a>
+<% end %>
 
 <div class="question_listing">
 <% @questions.each do |question| %>
 	<h4><a href="/questions/<%=question.id%>"><%= question.title %></a></h4>
 	<h5><%= question.body %></h5><br>
 	<div>
-	  <form method="POST" action="/questions/:id/upvote">
+	  <form method="POST" action="/questions/<%=question.id%>/upvote">
 	    <input type="submit" value="^" />
 	  </form>
-	  <form method="POST" action="/questions/:id/downvote">
+		<%=vote_count(question)  %>
+	  <form method="POST" action="/questions/<%=question.id%>/downvote">
 	    <input type="submit" value="v" />
 	  </form>
 	</div>

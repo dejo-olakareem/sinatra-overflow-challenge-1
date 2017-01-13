@@ -4,7 +4,7 @@
   <input type="submit">
 </form>
 
-<textarea name="question[body]" form="usrform">Question here...</textarea>
+<textarea name="question[body]" form="usrform" placeholder="<%=@question.body%>"></textarea>
 
 
 <form action="/questions/<%=@question.id%>" method="post">
