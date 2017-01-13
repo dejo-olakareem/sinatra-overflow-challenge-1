@@ -21,7 +21,7 @@ post '/questions' do
   @question = Question.new(params[:question]) #create new question
 
   if @question.save #saves new question or returns false if unsuccessful
-    redirect "/questions/#{@questions.id}" #redirect back to questions index page
+    redirect "/questions/#{@question.id}" #redirect back to questions index page
   else
     erb :"questions/new.html" # show new questions view again(potentially displaying errors)
   end
