@@ -16,6 +16,8 @@ gem 'shotgun', '~>0.9.1'
 
 gem 'awesome_print'
 
+gem 'bcrypt'
+
 gem 'faker'
 
 group :test do
