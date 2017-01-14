@@ -1,15 +1,15 @@
 
 #local: class_name
 
-<form class="form-horizontal" method="POST" action="<%=@commentable_id%>/comments/">
+<form class="form-horizontal" method="POST" action="/<%=@commentable_id%>/comments">
   <fieldset>
     <legend>New Comment</legend>
 
     <div class="form-group">
       <label for="textArea" name="comment[body]" class="col-lg-2 control-label">Please type your comment here</label>
       <div class="col-lg-10">
-        <input type="hidden" name="comments[class]" value="<%=class_name %>" />
-        <textarea class="form-control" rows="3" id="textArea"></textarea>
+        <input type="hidden" name="comment[class]" value="<%=@class_name %>" />
+        <textarea class="form-control" rows="3" id="textArea" name="comment[body]"></textarea>
       </div>
     </div>
 
