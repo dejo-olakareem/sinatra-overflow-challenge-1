@@ -23,7 +23,7 @@
 			</button>
 	  </form>
 		<div class ="vote-total">
-			<%=vote_count(question)  %>
+			<%= vote_count(question)  %>
 		</div>
 	  <form class="downvote" method="POST" action="/downvotes/<%=question.id%>/new">
 			<input type="hidden" name="class" value= "Question"  />

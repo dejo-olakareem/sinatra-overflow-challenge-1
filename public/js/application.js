@@ -7,6 +7,8 @@ $(document).ready(function() {
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 addQuestion();
 ansQuestion();
+increaseVoteCount();
+
 
 });
 
@@ -57,15 +59,36 @@ var increaseVoteCount = function() {
     var url = $(this).attr('action')
     var method = $(this).attr('method')
     var data = $(this).serialize()
-
+    var responseTarget = $(this)
     $.ajax({
       url: url,
       method: method,
       data: data
     }).done(function(response){
-      console.log($(this).siblings('span .vote_value'))
-      $(this).siblings('span .vote_value').first().html(response)
+    	console.log(response)
+      // console.log($(this).siblings('span .vote_value'))
+      responseTarget.siblings('.vote-total').html(response)
     })
   })
 };
 
+var decreaseVoteCount = function() {
+  var listeningSection = $('#container');
+  listeningSection.on("click", '.downvote', function(e){
+    e.preventDefault();
+    console.log("I been clicked!")
+    var url = $(this).attr('action')
+    var method = $(this).attr('method')
+    var data = $(this).serialize()
+    var responseTarget = $(this)
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    }).done(function(response){
+    	console.log(response)
+      // console.log($(this).siblings('span .vote_value'))
+      responseTarget.siblings('.vote-total').html(response)
+    })
+  })
+};
