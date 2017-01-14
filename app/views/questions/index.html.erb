@@ -8,12 +8,8 @@
 		<h5><%= question.body %></h5><br>
 
 	<div class ="vote-buttons">
-	  <form class="upvote" method="POST" action="/upvotes/<%=question.id%>/new">
+		<form class="upvote" method="POST" action="/upvotes/<%=question.id%>/new">
 			<input type="hidden" name="class" value="Question"  />
-	    <input type="submit" value="^" />
-	  </form>
-		<span class="vote_value"><%=vote_count(question) %></span>
-	  <form method="POST" action="/downvotes/<%=question.id%>/new">
 	    <button type="submit">
 				<span class="glyphicon glyphicon-chevron-up"> </span>
 			</button>
@@ -22,11 +18,10 @@
 			<%=vote_count(question)  %>
 		</div>
 	  <form class="downvote" method="POST" action="/downvotes/<%=question.id%>/new">
+			<input type="hidden" name="class" value= "Question"  />
 	    <button type="submit">
 				<span class="glyphicon glyphicon-chevron-down"></span>
 			</button>
-			<input type="hidden" name="class" value= "Question"  />
-			<input type="submit" value="v" />
 	  </form>
 	</div>
 <% end %>
