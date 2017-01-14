@@ -6,7 +6,7 @@
   </div>
   <!-- Displaying all the comments -->
   <ul>
-    <% @question.comments.each do |comment| %>
+    <% sort_by_vote(@question.comments).each do |comment| %>
       <li>
         <%=comment.body %>
       </li>
@@ -71,7 +71,7 @@
 
 
 
-<% @answers.each do |answer| %>
+<% sort_by_vote(@answers).each do |answer| %>
 	<h4><%= answer.body %></h4>
 
 	<h4><%= answer.user.username%></h4>
@@ -98,7 +98,7 @@
     <input type="submit" value="Comment!" />
   </form>
 
-  <% answer.comments.each do |comment| %>
+  <% sort_by_vote(answer.comments).each do |comment| %>
     <li>
       <%=comment.body %>
     </li>

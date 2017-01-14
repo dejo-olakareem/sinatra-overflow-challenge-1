@@ -18,5 +18,15 @@ helpers do
       end
   end
 
+  def sort_by_vote(array_of_instances)
+    new_arr = []
+    arr = array_of_instances.map{|instance| vote_count(instance)}.sort.reverse.uniq
+
+    arr.map do |votes|
+      new_arr << array_of_instances.find_all{|instance| vote_count(instance) == votes}
+    end
+    new_arr.flatten
+  end
+
 
 end
