@@ -1,27 +1,35 @@
 <% if user? %>
-<a href="/questions/new">Add Question</a>
+	<a id= "add-button" href="/questions/new">Add Question</a>
 <% end %>
 
+<div id="button"></div>
 <div class="question_listing">
-<% @questions.each do |question| %>
+
+
+<div id="container" class="question_listing">
+
+
+
+
+<% sort_by_vote(@questions).each do |question| %>
 		<h4><a href="/questions/<%=question.id%>"><%= question.title %></a></h4>
 		<h5><%= question.body %></h5><br>
 
 	<div class ="vote-buttons">
-	  <form method="POST" action="/upvotes/<%=question.id%>/new">
-			<input type="hidden" name="class" value= "Question"  />
+		<form class="upvote" method="POST" action="/upvotes/<%=question.id%>/new">
+			<input type="hidden" name="class" value="Question"  />
 	    <button type="submit">
 				<span class="glyphicon glyphicon-chevron-up"> </span>
 			</button>
 	  </form>
 		<div class ="vote-total">
-			<%=vote_count(question)  %>
+			<%= vote_count(question)  %>
 		</div>
-	  <form method="POST" action="/downvotes/<%=question.id%>/new">
+	  <form class="downvote" method="POST" action="/downvotes/<%=question.id%>/new">
+			<input type="hidden" name="class" value= "Question"  />
 	    <button type="submit">
 				<span class="glyphicon glyphicon-chevron-down"></span>
 			</button>
-			<input type="hidden" name="class" value= "Question"  />
 	  </form>
 	</div>
 <% end %>
