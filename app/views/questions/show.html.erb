@@ -17,12 +17,16 @@
 <!-- VOTING FORM -->
         <form  class="upvote" method="POST" action="/upvotes/<%=comment.id%>/new">
           <input type="hidden" name="class" value= "Comment"  />
-          <input type="submit" value="^">
+          <button type="submit">
+            <span class="glyphicon glyphicon-chevron-up"> </span>
+          </button>
         </form>
         <span class="vote_value"><%=vote_count(comment)%></span>
         <form class="downvote" method="POST" action="/downvotes/<%=comment.id%>/new">
           <input type="hidden" name="class" value= "Comment"  />
-          <input type="submit" value="V">
+          <button type="submit">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </button>
         </form>
 
 
@@ -41,10 +45,6 @@
 
 <div id="container">
 
-<div>
-  <form method="POST" action="/upvotes/<%=@question.id%>/new">
-    <input type="hidden" name="class" value= "Question"  />
-    <input class="upvote" type="submit" value="^" />
 <div class="vote-buttons">
   <form method="POST" action="/upvotes/<%=@question.id%>/new">
     <input type="hidden" name="class" value= "Question"  />
@@ -54,11 +54,10 @@
   </form>
   <span class="vote_value"><%=vote_count(@question)%></span>
   <form method="POST" action="/downvotes/<%=@question.id%>/new">
+    <input type="hidden" name="class" value= "Question"  />
     <button type="submit">
       <span class="glyphicon glyphicon-chevron-down"></span>
     </button>
-    <input type="hidden" name="class" value= "Question"  />
-    <input class="downvote" type="submit" value="v" />
   </form>
 </div>
 
@@ -75,18 +74,16 @@
 	<h4><%= answer.body %></h4>
   <form method="POST" action="/upvotes/<%=answer.id%>/new">
     <input type="hidden" name="class" value= "Answer"  />
-    <input class="upvote" type="submit" value="^" />
     <button type="submit">
       <span class="glyphicon glyphicon-chevron-up"> </span>
     </button>
   </form>
   <span class="vote_value"><%=vote_count(answer)  %></span>
   <form method="POST" action="/downvotes/<%=answer.id%>/new">
+    <input type="hidden" name="class" value= "Answer"  />
     <button type="submit">
       <span class="glyphicon glyphicon-chevron-down"></span>
     </button>
-    <input type="hidden" name="class" value= "Answer"  />
-    <input class="downvote" type="submit" value="v" />
   </form>
 <!-- displaying comments -->
 <ul>
@@ -110,12 +107,16 @@
   <!-- VOTING FORM -->
           <form  class="upvote" method="POST" action="/upvotes/<%=comment.id%>/new">
             <input type="hidden" name="class" value= "Comment"  />
-            <input type="submit" value="^">
+            <button type="submit">
+              <span class="glyphicon glyphicon-chevron-up"> </span>
+            </button>
           </form>
           <span class="vote_value"><%=vote_count(comment)%></span>
           <form class="downvote" method="POST" action="/downvotes/<%=comment.id%>/new">
             <input type="hidden" name="class" value= "Comment"  />
-            <input type="submit" value="V">
+            <button type="submit" class="btn-xs">
+              <span class="glyphicon glyphicon-chevron-down"></span>
+            </button>
           </form>
 </ul>
 
