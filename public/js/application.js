@@ -46,8 +46,8 @@ var ansQuestion = function(){
 
  
 
-  increaseVoteCount();
-});
+//   increaseVoteCount();
+// });
 
 var increaseVoteCount = function() {
   var listeningSection = $('#container');
