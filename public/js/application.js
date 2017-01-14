@@ -5,10 +5,42 @@ $(document).ready(function() {
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 addQuestion();
+ansQuestion();
 
 });
 
 
 var addQuestion = function(){
-	$(".container-fluid").siblings("a")
+	$("#add-button").on("click", function(e){
+		e.preventDefault()
+		var url = $(this).attr("href")
+		var method = "GET"
+		var form = $(this) 
+
+		$.ajax({
+			url : url,
+			method :method
+		}).done(function(res){
+			$("#button").html(res)
+		})
+	})
 }
+
+var ansQuestion = function(){
+	$("#answer-link").children("a").on("click", function(e){
+		e.preventDefault()
+		console.log(this)
+		var url = $(this).attr("href")
+		var method = "GET"
+
+		$.ajax({
+			url : url,
+			method :method
+		}).done(function(res){
+			$("#answer-form").html(res)
+		})
+
+	})
+}
+
+ 

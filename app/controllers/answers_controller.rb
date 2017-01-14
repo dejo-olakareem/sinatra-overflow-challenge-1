@@ -1,8 +1,12 @@
 get '/questions/:id/answers/new' do
+	if request.xhr?
+  	@question = Question.find(params[:id])
+  	erb :"answers/new.html", layout: false
+  else
+  	@question = Question.find(params[:id])
+  	erb :"answers/new.html"
+  end
 
-  @question = Question.find(params[:question_id])
-
-  erb :"answers/new.html"
 
 end
 

@@ -27,6 +27,7 @@
 	<a href="/questions/<%=@question.id%>/edit">Edit question</a>
 <% elsif user? && current_user != @question.user_id && (@question.answers.select {|answer| answer.user_id == current_user}).empty? %>
 	<h4 id="answer-link" ><a href="/questions/<%=@question.id%>/answers/new">Answer this question</a></h4>
+	<div id="answer-form"></div>
 <%end%>
 
 

@@ -1,7 +1,7 @@
 <% if user? %>
-<a href="/questions/new">Add Question</a>
+	<a id= "add-button" href="/questions/new">Add Question</a>
 <% end %>
-
+<div id="button"></div>
 <div class="question_listing">
 <% @questions.each do |question| %>
 		<h4><a href="/questions/<%=question.id%>"><%= question.title %></a></h4>
