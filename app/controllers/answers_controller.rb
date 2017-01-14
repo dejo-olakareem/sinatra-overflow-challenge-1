@@ -1,4 +1,4 @@
-get '/questions/:id/answers/new' do
+get '/questions/:question_id/answers/new' do
 
   @question = Question.find(params[:question_id])
 
@@ -9,7 +9,7 @@ end
 
 post '/questions/:id/answers' do
 
-  @question = Question.find(params[:question_id])
+  @question = Question.find(params[:id])
 
   @answer = @question.answers.new(params[:answer])
 
@@ -23,11 +23,11 @@ post '/questions/:id/answers' do
 end
 
 
-get '/questions/:id/answers/:id/edit' do
+get '/questions/:question_id/answers/:id/edit' do
 
   @question = Question.find(params[:question_id])
 
-  @answer = @question.answers.find(params[:id])
+  Answer.find(params[:id])
 
   erb :"answers/edit.html"
 
@@ -112,4 +112,3 @@ delete '/answers/:id/comments/:comment_id' do
 
   redirect '/comments' #or wherever we want
 end
-
