@@ -18,5 +18,12 @@ helpers do
       end
   end
 
+  def sort_by_vote(array_of_instances)
+    arr = array_of_instances.map{|instance| vote_count(instance)}.sort.reverse
+    arr.map do |votes|
+      array_of_instances.find{|instance| vote_count(instance) == votes}
+    end
+  end
+
 
 end
