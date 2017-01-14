@@ -108,16 +108,16 @@ end
 get '/questions/:id/comments/:comment_id/edit' do
 
   @question = Question.find(params[:id])
-  @comment = @answer.comments.find(params[:comment_id])
+  @comment = @question.comments.find(params[:comment_id])
 
   erb :'comments/_edit.html' #show edit comment view
 end
 
 
 put '/questions/:id/comments/:comment_id' do
-
+  @comment = Comment.find(params[:comment_id])
   @question = Question.find(params[:id])
-  @comment = @answer.comments.find(params[:comment_id])
+  @comment = @question.comments.find(params[:comment_id])
 
   @comment.assign_attributes(params[:comment])
   #this will be modified with AJAX

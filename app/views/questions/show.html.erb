@@ -4,7 +4,46 @@
     <h4><%= @question.body %></h4></br>
     <h5>-<%=@question.user.username%></h5>
   </div>
+  <!-- Displaying all the comments -->
+  <ul>
+    <% @question.comments.each do |comment| %>
+      <li>
+        <%=comment.body %>
+      </li>
+        <% if comment.user_id == current_user %>
+          <a href="/comments/<%=comment.id%>/edit">Edit</a>
+        <% end %>
+
+<!-- VOTING FORM -->
+        <form  class="upvote" method="POST" action="/upvotes/<%=comment.id%>/new">
+          <input type="hidden" name="class" value= "Comment"  />
+          <button type="submit">
+            <span class="glyphicon glyphicon-chevron-up"> </span>
+          </button>
+        </form>
+        <span class="vote_value"><%=vote_count(comment)%></span>
+        <form class="downvote" method="POST" action="/downvotes/<%=comment.id%>/new">
+          <input type="hidden" name="class" value= "Comment"  />
+          <button type="submit">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </button>
+        </form>
+
+
+
+
+    <% end %>
+
+  </ul>
+
+  <!-- COMMENT BUTTON FOR QUESTIONS -->
+  <form method="GET" action="/<%=@question.id%>/comments/new">
+    <input type="hidden" name="class" value="Question" />
+    <input type="submit" value="Comment!" />
+  </form>
 </div>
+
+<div id="container">
 
 <div class="vote-buttons">
   <form method="POST" action="/upvotes/<%=@question.id%>/new">
@@ -13,12 +52,12 @@
       <span class="glyphicon glyphicon-chevron-up"> </span>
     </button>
   </form>
-  <%=vote_count(@question)  %>
+  <span class="vote_value"><%=vote_count(@question)%></span>
   <form method="POST" action="/downvotes/<%=@question.id%>/new">
+    <input type="hidden" name="class" value= "Question"  />
     <button type="submit">
       <span class="glyphicon glyphicon-chevron-down"></span>
     </button>
-    <input type="hidden" name="class" value= "Question"  />
   </form>
 </div>
 
@@ -43,15 +82,53 @@
       <span class="glyphicon glyphicon-chevron-up"> </span>
     </button>
   </form>
-  <%=vote_count(answer)  %>
+  <span class="vote_value"><%=vote_count(answer)  %></span>
   <form method="POST" action="/downvotes/<%=answer.id%>/new">
+    <input type="hidden" name="class" value= "Answer"  />
     <button type="submit">
       <span class="glyphicon glyphicon-chevron-down"></span>
     </button>
-    <input type="hidden" name="class" value= "Answer"  />
   </form>
+
+<!-- displaying comments -->
+<ul>
+  <!-- COMMENT FORM FOR ANSWERS -->
+  <form method="GET" action="/<%=answer.id%>/comments/new">
+    <input type="hidden" name="class" value="Answer" />
+    <input type="submit" value="Comment!" />
+  </form>
+
+  <% answer.comments.each do |comment| %>
+    <li>
+      <%=comment.body %>
+    </li>
+
+
+
+  <% if comment.user_id == current_user %>
+    <a href="/comments/<%=comment.id%>/edit">Edit</a>
+  <% end %>
+
+  <!-- VOTING FORM -->
+          <form  class="upvote" method="POST" action="/upvotes/<%=comment.id%>/new">
+            <input type="hidden" name="class" value= "Comment"  />
+            <button type="submit">
+              <span class="glyphicon glyphicon-chevron-up"> </span>
+            </button>
+          </form>
+          <span class="vote_value"><%=vote_count(comment)%></span>
+          <form class="downvote" method="POST" action="/downvotes/<%=comment.id%>/new">
+            <input type="hidden" name="class" value= "Comment"  />
+            <button type="submit" class="btn-xs">
+              <span class="glyphicon glyphicon-chevron-down"></span>
+            </button>
+          </form>
+</ul>
+
 
 	<%if current_user == answer.user_id %>
 		<a href="/questions/<%=@question.id%>/answers/<%=answer.id%>/edit">EDIT</a>
 	<% end %>
+  <% end %>
 <% end %>
+</div>
