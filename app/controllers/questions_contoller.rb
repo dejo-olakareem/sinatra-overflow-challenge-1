@@ -9,9 +9,11 @@ end
 
 
 get '/questions/new' do
-
-
-  erb :"questions/new.html" #show new questions view
+  if request.xhr?
+    erb :"questions/new.html" , :layout => false
+  else
+    erb :"questions/new.html" #show new questions view
+  end
 
 end
 

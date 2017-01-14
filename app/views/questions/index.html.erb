@@ -1,8 +1,16 @@
 <% if user? %>
-<a href="/questions/new">Add Question</a>
+	<a id= "add-button" href="/questions/new">Add Question</a>
 <% end %>
 
+<div id="button"></div>
+<div class="question_listing">
+
+
 <div id="container" class="question_listing">
+
+
+
+
 <% sort_by_vote(@questions).each do |question| %>
 		<h4><a href="/questions/<%=question.id%>"><%= question.title %></a></h4>
 		<h5><%= question.body %></h5><br>

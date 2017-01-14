@@ -66,12 +66,16 @@
 	<a href="/questions/<%=@question.id%>/edit">Edit question</a>
 <% elsif user? && current_user != @question.user_id && (@question.answers.select {|answer| answer.user_id == current_user}).empty? %>
 	<h4 id="answer-link" ><a href="/questions/<%=@question.id%>/answers/new">Answer this question</a></h4>
+	<div id="answer-form"></div>
 <%end%>
 
 
 
 <% sort_by_vote(@answers).each do |answer| %>
 	<h4><%= answer.body %></h4>
+
+	<h4><%= answer.user.username%></h4>
+
   <form method="POST" action="/upvotes/<%=answer.id%>/new">
     <input type="hidden" name="class" value= "Answer"  />
     <button type="submit">
@@ -85,6 +89,7 @@
       <span class="glyphicon glyphicon-chevron-down"></span>
     </button>
   </form>
+
 <!-- displaying comments -->
 <ul>
   <!-- COMMENT FORM FOR ANSWERS -->
@@ -119,6 +124,7 @@
             </button>
           </form>
 </ul>
+
 
 	<%if current_user == answer.user_id %>
 		<a href="/questions/<%=@question.id%>/answers/<%=answer.id%>/edit">EDIT</a>
